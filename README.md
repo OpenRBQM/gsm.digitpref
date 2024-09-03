@@ -1,0 +1,33 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# gsm.digitpref
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/OpenRBQM/gsm.digitpref/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OpenRBQM/gsm.digitpref/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/OpenRBQM/gsm.digitpref/graph/badge.svg)](https://app.codecov.io/gh/OpenRBQM/gsm.digitpref)
+<!-- badges: end -->
+
+The goal of gsm.digitpref is to …
+
+## Installation
+
+You can install the development version of gsm.digitpref from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("OpenRBQM/gsm.digitpref")
+```
+
+## Example
+
+(to add)
+
+## Code of conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](https://openrbqm.github.io/gsm.digitpref/CODE_OF_CONDUCT). By
+participating in this project you agree to abide by its terms.
