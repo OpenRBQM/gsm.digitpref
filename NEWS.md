@@ -1,3 +1,3 @@
 # gsm.digitpref (development version)
 
-- This is a news item.
+- Added `stackedDigitChart()` for visualizing digit distribution by group. (@swanggilead, #5)
