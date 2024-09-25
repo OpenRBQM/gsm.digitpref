@@ -13,9 +13,13 @@ URL: https://openrbqm.github.io/gsm.digitpref/,
     https://github.com/OpenRBQM/gsm.digitpref
 BugReports: https://github.com/OpenRBQM/gsm.digitpref/issues
 Imports: 
+    cli,
     ggplot2,
     glue,
-    rlang
+    purrr,
+    rlang,
+    stringi,
+    tibble
 Suggests: 
     dplyr,
     testthat (>= 3.0.0),
