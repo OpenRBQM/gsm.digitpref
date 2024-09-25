@@ -32,6 +32,6 @@ a value for each value of \code{x}, at that 10's place (given in the name of
 that element).
 }
 \description{
-This is the workhorse behind \code{\link[=splitByPlaces]{splitByPlaces()}}.
+This is the workhorse behind \code{\link[=splitByPlace]{splitByPlace()}}.
 }
 \keyword{internal}

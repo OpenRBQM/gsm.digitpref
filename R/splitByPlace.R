@@ -20,10 +20,10 @@
 #' @export
 #' @examples
 #' random_data <- runif(10, 0, 1000)
-#' splitByPlaces(random_data)
-#' splitByPlaces(random_data, 2, -5)
-#' splitByPlaces(random_data, 2, -5, "measurements")
-splitByPlaces <- function(x,
+#' splitByPlace(random_data)
+#' splitByPlace(random_data, 2, -5)
+#' splitByPlace(random_data, 2, -5, "measurements")
+splitByPlace <- function(x,
                           max_power_10 = 2,
                           min_power_10 = -2,
                           x_arg = rlang::caller_arg(x),
@@ -106,9 +106,9 @@ numToChrHalves <- function(x,
 
 #' Split a vector into a named list of place values
 #'
-#' This is the workhorse behind [splitByPlaces()].
+#' This is the workhorse behind [splitByPlace()].
 #'
-#' @inheritParams splitByPlaces
+#' @inheritParams splitByPlace
 #' @param intPlaces `integer` A vector of 10's places to include, from highest
 #'   10's place to lowest.
 #'

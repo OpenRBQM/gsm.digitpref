@@ -1,4 +1,4 @@
-# splitByPlaces works for simple integers
+# splitByPlace works for simple integers
 
     Code
       test_result
@@ -10,7 +10,7 @@
       2 246.00      2      4      6      NA
       3 369.00      3      6      9      NA
 
-# splitByPlaces works for doubles
+# splitByPlace works for doubles
 
     Code
       test_result

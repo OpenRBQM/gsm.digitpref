@@ -1,13 +1,13 @@
-test_that("splitByPlaces errors for non-numbers", {
+test_that("splitByPlace errors for non-numbers", {
   expect_error(
-    splitByPlaces(letters),
+    splitByPlace(letters),
     class = "gsm.digitpref-error-non_number"
   )
 })
 
-test_that("splitByPlaces works for simple integers", {
+test_that("splitByPlace works for simple integers", {
   given <- 1:3*123
-  test_result <- splitByPlaces(given, 2, -1)
+  test_result <- splitByPlace(given, 2, -1)
   expect_named(test_result, c("given", "10^2", "10^1", "10^0", "10^-1"))
   expect_identical(test_result$`10^2`, 1:3)
   expect_identical(test_result$`10^1`, 1:3*2L)
@@ -18,9 +18,9 @@ test_that("splitByPlaces works for simple integers", {
   })
 })
 
-test_that("splitByPlaces works for doubles", {
+test_that("splitByPlace works for doubles", {
   given <- 1:3*123.21
-  test_result <- splitByPlaces(given)
+  test_result <- splitByPlace(given)
   expect_named(test_result, c("given", "10^2", "10^1", "10^0", "10^-1", "10^-2"))
   expect_identical(test_result$`10^2`, 1:3)
   expect_identical(test_result$`10^1`, 1:3*2L)
