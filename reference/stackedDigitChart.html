@@ -46,13 +46,15 @@ y axis.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">stackedDigitChart</span><span class="op">(</span></span>
-<span>  <span class="va">digit_data</span>,</span>
-<span>  <span class="va">col_group</span>,</span>
-<span>  <span class="va">col_digit</span>,</span>
-<span>  group_label <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/defusing-advanced.html" class="external-link">ensym</a></span><span class="op">(</span><span class="va">col_group</span><span class="op">)</span>,</span>
-<span>  chart_title <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"Digit Distribution of Data by {group_label}"</span><span class="op">)</span>,</span>
-<span>  digit_palette <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set3"</span><span class="op">)</span>,</span>
-<span>  plot_theme <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">dfDigits</span>,</span>
+<span>  <span class="va">colGroup</span>,</span>
+<span>  <span class="va">colPlace</span>,</span>
+<span>  strGroupLabel <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/defusing-advanced.html" class="external-link">ensym</a></span><span class="op">(</span><span class="va">colGroup</span><span class="op">)</span>,</span>
+<span>  strPlaceLabel <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/defusing-advanced.html" class="external-link">ensym</a></span><span class="op">(</span><span class="va">colPlace</span><span class="op">)</span>,</span>
+<span>  strChartTitle <span class="op">=</span></span>
+<span>    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"</span><span class="op">)</span>,</span>
+<span>  scaleDigitPalette <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set3"</span><span class="op">)</span>,</span>
+<span>  themePlot <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -60,35 +62,42 @@ y axis.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-digit-data">digit_data<a class="anchor" aria-label="anchor" href="#arg-digit-data"></a></dt>
-<dd><p>A data.frame with a grouping column and at least one column
-for a digit place.</p></dd>
+<dl><dt id="arg-dfdigits">dfDigits<a class="anchor" aria-label="anchor" href="#arg-dfdigits"></a></dt>
+<dd><p><code>data.frame</code> A data.frame with a grouping column and at least
+one column for a digit place.</p></dd>
 
 
-<dt id="arg-col-group">col_group<a class="anchor" aria-label="anchor" href="#arg-col-group"></a></dt>
+<dt id="arg-colgroup">colGroup<a class="anchor" aria-label="anchor" href="#arg-colgroup"></a></dt>
 <dd><p>&lt;<code><a href="https://dplyr.tidyverse.org/reference/dplyr_data_masking.html" class="external-link">data-masked</a></code>&gt; The column to
 group by.</p></dd>
 
 
-<dt id="arg-col-digit">col_digit<a class="anchor" aria-label="anchor" href="#arg-col-digit"></a></dt>
+<dt id="arg-colplace">colPlace<a class="anchor" aria-label="anchor" href="#arg-colplace"></a></dt>
 <dd><p>&lt;<code><a href="https://dplyr.tidyverse.org/reference/dplyr_data_masking.html" class="external-link">data-masked</a></code>&gt; The column with
 the digit place to be plotted.</p></dd>
 
 
-<dt id="arg-group-label">group_label<a class="anchor" aria-label="anchor" href="#arg-group-label"></a></dt>
-<dd><p>An optional name to use for the grouping column in labels.</p></dd>
+<dt id="arg-strgrouplabel">strGroupLabel<a class="anchor" aria-label="anchor" href="#arg-strgrouplabel"></a></dt>
+<dd><p><code>character</code> An optional name to use for the grouping
+column in labels.</p></dd>
 
 
-<dt id="arg-chart-title">chart_title<a class="anchor" aria-label="anchor" href="#arg-chart-title"></a></dt>
-<dd><p>An optional title for the chart.</p></dd>
+<dt id="arg-strplacelabel">strPlaceLabel<a class="anchor" aria-label="anchor" href="#arg-strplacelabel"></a></dt>
+<dd><p><code>character</code> An optional name to use for the place column
+in labels.</p></dd>
 
 
-<dt id="arg-digit-palette">digit_palette<a class="anchor" aria-label="anchor" href="#arg-digit-palette"></a></dt>
-<dd><p>An optional fill palette to use for the digits.</p></dd>
+<dt id="arg-strcharttitle">strChartTitle<a class="anchor" aria-label="anchor" href="#arg-strcharttitle"></a></dt>
+<dd><p><code>character</code> An optional title for the chart.</p></dd>
 
 
-<dt id="arg-plot-theme">plot_theme<a class="anchor" aria-label="anchor" href="#arg-plot-theme"></a></dt>
-<dd><p>An optional theme to apply to the plot.</p></dd>
+<dt id="arg-scaledigitpalette">scaleDigitPalette<a class="anchor" aria-label="anchor" href="#arg-scaledigitpalette"></a></dt>
+<dd><p>An optional <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html" class="external-link">ggplot2::scale_fill_discrete()</a></code> palette
+to use for the digits.</p></dd>
+
+
+<dt id="arg-themeplot">themePlot<a class="anchor" aria-label="anchor" href="#arg-themeplot"></a></dt>
+<dd><p>An optional <code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">ggplot2::theme()</a></code> to apply to the plot.</p></dd>
 
 </dl></div>
 
@@ -96,13 +105,13 @@ the digit place to be plotted.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  siteID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"siteA"</span>, <span class="st">"siteB"</span>, <span class="st">"siteC"</span><span class="op">)</span>, <span class="fl">1000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  onesDigit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">1000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  onesPlace <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">1000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesDigit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesPlace</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="stackedDigitChart-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesDigit</span>, <span class="st">"Site"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesPlace</span>, <span class="st">"Site"</span>, <span class="st">"One Place"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="stackedDigitChart-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesDigit</span>, digit_palette <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">stackedDigitChart</span><span class="op">(</span><span class="va">sample_data</span>, <span class="va">siteID</span>, <span class="va">onesPlace</span>, scaleDigitPalette <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="stackedDigitChart-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -115,7 +124,7 @@ the digit place to be plotted.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

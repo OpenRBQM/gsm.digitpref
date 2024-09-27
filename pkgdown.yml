@@ -1,8 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-09-17T17:56Z
+last_built: 2024-09-27T19:36Z
 urls:
   reference: https://openrbqm.github.io/gsm.digitpref/reference
   article: https://openrbqm.github.io/gsm.digitpref/articles
