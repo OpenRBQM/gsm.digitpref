@@ -4,52 +4,57 @@
 #' the x axis, and the distribution of digits in a particular digit place on the
 #' y axis.
 #'
-#' @param digit_data A data.frame with a grouping column and at least one column
-#'   for a digit place.
-#' @param col_group <[`data-masked`][dplyr::dplyr_data_masking]> The column to
+#' @param dfDigits `data.frame` A data.frame with a grouping column and at least
+#'   one column for a digit place.
+#' @param colGroup <[`data-masked`][dplyr::dplyr_data_masking]> The column to
 #'   group by.
-#' @param col_digit <[`data-masked`][dplyr::dplyr_data_masking]> The column with
+#' @param colPlace <[`data-masked`][dplyr::dplyr_data_masking]> The column with
 #'   the digit place to be plotted.
-#' @param group_label An optional name to use for the grouping column in labels.
-#' @param chart_title An optional title for the chart.
-#' @param digit_palette An optional fill palette to use for the digits.
-#' @param plot_theme An optional theme to apply to the plot.
+#' @param strGroupLabel `character` An optional name to use for the grouping
+#'   column in labels.
+#' @param strPlaceLabel `character` An optional name to use for the place column
+#'   in labels.
+#' @param strChartTitle `character` An optional title for the chart.
+#' @param scaleDigitPalette An optional [ggplot2::scale_fill_discrete()] palette
+#'   to use for the digits.
+#' @param themePlot An optional [ggplot2::theme()] to apply to the plot.
 #'
 #' @export
 #' @examples
 #' sample_data <- data.frame(
 #'   siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
-#'   onesDigit = sample(0:9, 1000, replace = TRUE)
+#'   onesPlace = sample(0:9, 1000, replace = TRUE)
 #' )
-#' stackedDigitChart(sample_data, siteID, onesDigit)
-#' stackedDigitChart(sample_data, siteID, onesDigit, "Site")
-#' stackedDigitChart(sample_data, siteID, onesDigit, digit_palette = NULL)
+#' stackedDigitChart(sample_data, siteID, onesPlace)
+#' stackedDigitChart(sample_data, siteID, onesPlace, "Site", "One Place")
+#' stackedDigitChart(sample_data, siteID, onesPlace, scaleDigitPalette = NULL)
 stackedDigitChart <- function(
-    digit_data,
-    col_group,
-    col_digit,
-    group_label = rlang::ensym(col_group),
-    chart_title = glue::glue(
-      "Digit Distribution of Data by {group_label}"
+    dfDigits,
+    colGroup,
+    colPlace,
+    strGroupLabel = rlang::ensym(colGroup),
+    strPlaceLabel = rlang::ensym(colPlace),
+    strChartTitle = glue::glue(
+      "Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"
     ),
-    digit_palette = ggplot2::scale_fill_brewer(palette = "Set3"),
-    plot_theme = ggplot2::theme_bw()
+    scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Set3"),
+    themePlot = ggplot2::theme_bw()
 ) {
   ggplot2::ggplot(
-    data = digit_data,
+    data = dfDigits,
     ggplot2::aes(
-      x = {{ col_group }},
-      fill = factor(as.character({{ col_digit }}), levels = 0:9)
+      x = {{ colGroup }},
+      fill = factor(as.character({{ colPlace }}), levels = 0:9)
     )
   ) +
     ggplot2::geom_bar(position = "fill") +
-    digit_palette +
+    scaleDigitPalette +
     ggplot2::labs(
-      title = as.character(chart_title),
-      x = group_label,
+      title = as.character(strChartTitle),
+      x = strGroupLabel,
       y = "Frequency",
       fill = "Digit"
     ) +
-    plot_theme +
+    themePlot +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90))
 }

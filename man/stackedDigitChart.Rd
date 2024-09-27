@@ -5,32 +5,39 @@
 \title{Plot digit distribution by group}
 \usage{
 stackedDigitChart(
-  digit_data,
-  col_group,
-  col_digit,
-  group_label = rlang::ensym(col_group),
-  chart_title = glue::glue("Digit Distribution of Data by {group_label}"),
-  digit_palette = ggplot2::scale_fill_brewer(palette = "Set3"),
-  plot_theme = ggplot2::theme_bw()
+  dfDigits,
+  colGroup,
+  colPlace,
+  strGroupLabel = rlang::ensym(colGroup),
+  strPlaceLabel = rlang::ensym(colPlace),
+  strChartTitle =
+    glue::glue("Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"),
+  scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Set3"),
+  themePlot = ggplot2::theme_bw()
 )
 }
 \arguments{
-\item{digit_data}{A data.frame with a grouping column and at least one column
-for a digit place.}
+\item{dfDigits}{\code{data.frame} A data.frame with a grouping column and at least
+one column for a digit place.}
 
-\item{col_group}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> The column to
+\item{colGroup}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> The column to
 group by.}
 
-\item{col_digit}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> The column with
+\item{colPlace}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> The column with
 the digit place to be plotted.}
 
-\item{group_label}{An optional name to use for the grouping column in labels.}
+\item{strGroupLabel}{\code{character} An optional name to use for the grouping
+column in labels.}
 
-\item{chart_title}{An optional title for the chart.}
+\item{strPlaceLabel}{\code{character} An optional name to use for the place column
+in labels.}
 
-\item{digit_palette}{An optional fill palette to use for the digits.}
+\item{strChartTitle}{\code{character} An optional title for the chart.}
 
-\item{plot_theme}{An optional theme to apply to the plot.}
+\item{scaleDigitPalette}{An optional \code{\link[ggplot2:scale_colour_discrete]{ggplot2::scale_fill_discrete()}} palette
+to use for the digits.}
+
+\item{themePlot}{An optional \code{\link[ggplot2:theme]{ggplot2::theme()}} to apply to the plot.}
 }
 \description{
 Create a stacked bar chart of digit distribution, with a grouping variable on
@@ -40,9 +47,9 @@ y axis.
 \examples{
 sample_data <- data.frame(
   siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
-  onesDigit = sample(0:9, 1000, replace = TRUE)
+  onesPlace = sample(0:9, 1000, replace = TRUE)
 )
-stackedDigitChart(sample_data, siteID, onesDigit)
-stackedDigitChart(sample_data, siteID, onesDigit, "Site")
-stackedDigitChart(sample_data, siteID, onesDigit, digit_palette = NULL)
+stackedDigitChart(sample_data, siteID, onesPlace)
+stackedDigitChart(sample_data, siteID, onesPlace, "Site", "One Place")
+stackedDigitChart(sample_data, siteID, onesPlace, scaleDigitPalette = NULL)
 }
