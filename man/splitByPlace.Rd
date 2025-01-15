@@ -16,14 +16,13 @@ splitByPlace(
 \item{x}{\code{numeric} A vector of values to evaluate.}
 
 \item{max_power_10}{\code{integer} The highest 10s place to check, as a power of
-10. This will set the first column of the returned results.}
+10.}
 
-\item{min_power_10}{\code{integer} The highest 10s place to check, as a power of
-10. Must be lower than \code{max_power_10}. This will set the first column of
-the returned results.}
+\item{min_power_10}{\code{integer} The lowest 10s place to check, as a power of
+10. Must be lower than \code{max_power_10}.}
 
 \item{x_arg}{\code{character} The name of \code{x} to use in the output table and error
-messages. By default this is automatically deteermined from the calling
+messages. By default this is automatically determined from the calling
 context, and you can likely leave it as-is.}
 
 \item{call}{The execution environment of a currently

@@ -13,7 +13,8 @@ showDigits(x, min_power_10)
 one place past this value, to avoid confusion from rounding.}
 }
 \value{
-A special numeric vector class from \code{\link[tibble:num]{tibble::num()}} to display the number
+A special numeric vector class from \code{\link[tibble:num]{tibble::num()}} to display the
+number.
 }
 \description{
 Set up display of digits for a column in a tibble

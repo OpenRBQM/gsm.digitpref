@@ -18,7 +18,7 @@ makePlacesList(
 10's place to lowest.}
 
 \item{x_arg}{\code{character} The name of \code{x} to use in the output table and error
-messages. By default this is automatically deteermined from the calling
+messages. By default this is automatically determined from the calling
 context, and you can likely leave it as-is.}
 
 \item{call}{The execution environment of a currently
