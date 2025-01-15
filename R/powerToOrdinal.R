@@ -18,6 +18,8 @@
 powerToOrdinal <- function(power_10,
                            strCase = c("Title", "lower", "UPPER"),
                            strAfter = character()) {
+  rlang::check_installed("english", "to convert a power of ten to an ordinal.")
+  rlang::check_installed("stringr", "to convert a power of ten to an ordinal.")
   num <- 10^abs(power_10)
   word <- english::as.english(num) |>
     stringr::str_remove("^one ")
