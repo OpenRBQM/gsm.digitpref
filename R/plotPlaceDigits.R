@@ -11,7 +11,7 @@
 #'   siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
 #'   labResults = runif(1000)*10
 #' )
-#' plotPlaceDigits(sample_data, labResults, siteID, -2)
+#' plotPlaceDigits(sample_data, "labResults", "siteID", -2)
 plotPlaceDigits <- function(
     dfData,
     colData,

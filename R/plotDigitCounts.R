@@ -11,9 +11,9 @@
 #'   siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
 #'   onesPlace = sample(0:9, 1000, replace = TRUE)
 #' )
-#' plotDigitCounts(sample_data, siteID, onesPlace)
-#' plotDigitCounts(sample_data, siteID, onesPlace, "Site", "One Place")
-#' plotDigitCounts(sample_data, siteID, onesPlace, scaleDigitPalette = NULL)
+#' plotDigitCounts(sample_data, "siteID", "onesPlace")
+#' plotDigitCounts(sample_data, "siteID", "onesPlace", "Site", "One Place")
+#' plotDigitCounts(sample_data, "siteID", "onesPlace", scaleDigitPalette = NULL)
 plotDigitCounts <- function(
     dfDigits,
     colGroup,

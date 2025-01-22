@@ -9,7 +9,7 @@ plotPlaceDigits(
   colData,
   colGroup,
   power_10,
-  strGroupLabel = rlang::ensym(colGroup),
+  strGroupLabel = colGroup,
   strPlaceLabel = powerToOrdinal(power_10, strAfter = "Place"),
   strChartTitle =
     glue::glue("Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"),
@@ -50,5 +50,5 @@ sample_data <- tibble::tibble(
   siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
   labResults = runif(1000)*10
 )
-plotPlaceDigits(sample_data, labResults, siteID, -2)
+plotPlaceDigits(sample_data, "labResults", "siteID", -2)
 }
