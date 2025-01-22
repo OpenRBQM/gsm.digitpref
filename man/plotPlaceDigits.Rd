@@ -21,11 +21,9 @@ plotPlaceDigits(
 \item{dfData}{\code{data.frame} A data.frame with a grouping column and at least
 one numeric data column.}
 
-\item{colData}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A data that
-contains numeric data.}
+\item{colData}{\code{character} The name of a column that contains numeric data.}
 
-\item{colGroup}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A column to
-group by.}
+\item{colGroup}{\code{character} The name of a column to group by.}
 
 \item{power_10}{\code{integer} The 10s place to check, as a power of 10.}
 

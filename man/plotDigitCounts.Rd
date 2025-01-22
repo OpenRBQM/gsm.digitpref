@@ -8,16 +8,8 @@ plotDigitCounts(
   dfDigits,
   colGroup,
   colPlace,
-  strGroupLabel = rlang::as_name({
-     {
-         colGroup
-     }
- }),
-  strPlaceLabel = rlang::as_name({
-     {
-         colPlace
-     }
- }),
+  strGroupLabel = colGroup,
+  strPlaceLabel = colPlace,
   strChartTitle =
     glue::glue("Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"),
   scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Set3"),
@@ -28,11 +20,10 @@ plotDigitCounts(
 \item{dfDigits}{\code{data.frame} A data.frame with a grouping column and at least
 one column for a digit place.}
 
-\item{colGroup}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A column to
-group by.}
+\item{colGroup}{\code{character} The name of a column to group by.}
 
-\item{colPlace}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A column with
-integer values between 0 and 9.}
+\item{colPlace}{\code{character} The name of a column with integer values between
+0 and 9.}
 
 \item{strGroupLabel}{\code{character} An optional name to use for the grouping
 column in labels.}

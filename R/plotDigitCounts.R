@@ -18,16 +18,14 @@ plotDigitCounts <- function(
     dfDigits,
     colGroup,
     colPlace,
-    strGroupLabel = rlang::as_name({{ colGroup }}),
-    strPlaceLabel = rlang::as_name({{ colPlace }}),
+    strGroupLabel = colGroup,
+    strPlaceLabel = colPlace,
     strChartTitle = glue::glue(
       "Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"
     ),
     scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Set3"),
     themePlot = ggplot2::theme_bw()
 ) {
-  colGroup <- nameColumns(dfDigits, {{ colGroup }})
-  colPlace <- nameColumns(dfDigits, {{ colPlace }})
   ggplot2::ggplot(
     data = dfDigits,
     ggplot2::aes(

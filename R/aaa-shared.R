@@ -2,12 +2,10 @@
 #'
 #' Reused parameter definitions are gathered here for easier usage.
 #'
-#' @param colData <[`data-masked`][dplyr::dplyr_data_masking]> A data that
-#'   contains numeric data.
-#' @param colGroup <[`data-masked`][dplyr::dplyr_data_masking]> A column to
-#'   group by.
-#' @param colPlace <[`data-masked`][dplyr::dplyr_data_masking]> A column with
-#'   integer values between 0 and 9.
+#' @param colData `character` The name of a column that contains numeric data.
+#' @param colGroup `character` The name of a column to group by.
+#' @param colPlace `character` The name of a column with integer values between
+#'   0 and 9.
 #' @param dfData `data.frame` A data.frame with a grouping column and at least
 #'   one numeric data column.
 #' @param dfDigits `data.frame` A data.frame with a grouping column and at least

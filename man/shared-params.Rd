@@ -4,14 +4,12 @@
 \alias{shared-params}
 \title{Parameters used in multiple functions}
 \arguments{
-\item{colData}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A data that
-contains numeric data.}
+\item{colData}{\code{character} The name of a column that contains numeric data.}
 
-\item{colGroup}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A column to
-group by.}
+\item{colGroup}{\code{character} The name of a column to group by.}
 
-\item{colPlace}{<\code{\link[dplyr:dplyr_data_masking]{data-masked}}> A column with
-integer values between 0 and 9.}
+\item{colPlace}{\code{character} The name of a column with integer values between
+0 and 9.}
 
 \item{dfData}{\code{data.frame} A data.frame with a grouping column and at least
 one numeric data column.}

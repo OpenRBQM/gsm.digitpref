@@ -4,7 +4,7 @@ test_that("plotDigitCounts produces an expected chart", {
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
-  test_result <- plotDigitCounts(sample_data, siteID, onesPlace)
+  test_result <- plotDigitCounts(sample_data, "siteID", "onesPlace")
   expect_s3_class(test_result, "ggplot")
   expect_identical(as.character(test_result$labels$x), "siteID")
   expect_identical(as.character(test_result$labels$y), "Frequency")
@@ -27,8 +27,8 @@ test_that("plotDigitCounts accepts supplied group label", {
   )
   test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strGroupLabel = "Alternative Name"
   )
   expect_s3_class(test_result, "ggplot")
@@ -47,8 +47,8 @@ test_that("plotDigitCounts accepts supplied place label", {
   )
   test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strPlaceLabel = "Ones Place"
   )
   expect_s3_class(test_result, "ggplot")
@@ -66,8 +66,8 @@ test_that("plotDigitCounts accepts title override", {
   )
   test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strGroupLabel = "Alternative Name",
     strChartTitle = "My Chart"
   )
@@ -89,8 +89,8 @@ test_that("plotDigitCounts accepts scaleDigitPalette override", {
     title = "plotDigitCounts no palette",
     fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       scaleDigitPalette = NULL
     )
   )
@@ -98,8 +98,8 @@ test_that("plotDigitCounts accepts scaleDigitPalette override", {
     title = "plotDigitCounts paired palette",
     fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Paired")
     )
   )
@@ -115,8 +115,8 @@ test_that("plotDigitCounts accepts theme override", {
     title = "plotDigitCounts no theme",
     fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       themePlot = NULL
     )
   )
@@ -124,8 +124,8 @@ test_that("plotDigitCounts accepts theme override", {
     title = "plotDigitCounts theme_minimal",
     fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       themePlot = ggplot2::theme_minimal()
     )
   )

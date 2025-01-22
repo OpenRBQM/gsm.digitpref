@@ -17,7 +17,7 @@ plotPlaceDigits <- function(
     colData,
     colGroup,
     power_10,
-    strGroupLabel = rlang::ensym(colGroup),
+    strGroupLabel = colGroup,
     strPlaceLabel = powerToOrdinal(power_10, strAfter = "Place"),
     strChartTitle = glue::glue(
       "Digit Distribution for {strPlaceLabel} of Data by {strGroupLabel}"
@@ -26,22 +26,22 @@ plotPlaceDigits <- function(
     themePlot = ggplot2::theme_bw()
 ) {
   placeDigits <- splitByPlace(
-    unique(dplyr::pull(dfData, {{ colData }})),
+    unique(dplyr::pull(dfData, colData)),
     max_power_10 = power_10,
     min_power_10 = power_10,
-    x_arg = rlang::ensym(colData)
+    x_arg = colData
   )
 
   dfDigits <- dplyr::left_join(
     dfData,
     placeDigits,
-    by = dplyr::join_by({{ colData }})
+    by = colData
   )
 
   plotDigitCounts(
     dfDigits,
     colPlace = paste0("10^", power_10),
-    colGroup = {{ colGroup }},
+    colGroup = colGroup,
     strGroupLabel = strGroupLabel,
     strPlaceLabel = strPlaceLabel,
     strChartTitle = strChartTitle,
