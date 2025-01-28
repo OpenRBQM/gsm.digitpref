@@ -1,13 +1,15 @@
 Package: gsm.digitpref
-Title: What the Package Does (One Line, Title Case)
+Title: Identify and Visualize Digit Preference
 Version: 0.0.0.9000
 Authors@R: c(
     person("Jon", "Harmon", , "jon.harmon@atorusresearch.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346")),
     person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = "aut"),
+    person("Shuo", "Wang", , "shuo.wang@gilead.com", role = "ctb"),
     person("Gilead Sciences", role = "cph")
   )
-Description: What the package does (one paragraph).
+Description: Visualization the distributions of digits in data, optionally 
+    grouped by site or other grouping variable.
 License: MIT + file LICENSE
 URL: https://openrbqm.github.io/gsm.digitpref/,
     https://github.com/OpenRBQM/gsm.digitpref
@@ -22,6 +24,8 @@ Imports:
     tibble
 Suggests: 
     dplyr,
+    english,
+    stringr,
     testthat (>= 3.0.0),
     vdiffr
 Config/testthat/edition: 3

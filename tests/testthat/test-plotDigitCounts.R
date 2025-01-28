@@ -1,10 +1,10 @@
-test_that("stackedDigitChart produces an expected chart", {
+test_that("plotDigitCounts produces an expected chart", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
-  test_result <- stackedDigitChart(sample_data, siteID, onesPlace)
+  test_result <- plotDigitCounts(sample_data, "siteID", "onesPlace")
   expect_s3_class(test_result, "ggplot")
   expect_identical(as.character(test_result$labels$x), "siteID")
   expect_identical(as.character(test_result$labels$y), "Frequency")
@@ -14,21 +14,21 @@ test_that("stackedDigitChart produces an expected chart", {
     "Digit Distribution for onesPlace of Data by siteID"
   )
   vdiffr::expect_doppelganger(
-    title = "stackedDigitChart default",
+    title = "plotDigitCounts default",
     fig = test_result
   )
 })
 
-test_that("stackedDigitChart accepts supplied group label", {
+test_that("plotDigitCounts accepts supplied group label", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
-  test_result <- stackedDigitChart(
+  test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strGroupLabel = "Alternative Name"
   )
   expect_s3_class(test_result, "ggplot")
@@ -39,16 +39,16 @@ test_that("stackedDigitChart accepts supplied group label", {
   )
 })
 
-test_that("stackedDigitChart accepts supplied place label", {
+test_that("plotDigitCounts accepts supplied place label", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
-  test_result <- stackedDigitChart(
+  test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strPlaceLabel = "Ones Place"
   )
   expect_s3_class(test_result, "ggplot")
@@ -58,16 +58,16 @@ test_that("stackedDigitChart accepts supplied place label", {
   )
 })
 
-test_that("stackedDigitChart accepts title override", {
+test_that("plotDigitCounts accepts title override", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
-  test_result <- stackedDigitChart(
+  test_result <- plotDigitCounts(
     sample_data,
-    siteID,
-    onesPlace,
+    "siteID",
+    "onesPlace",
     strGroupLabel = "Alternative Name",
     strChartTitle = "My Chart"
   )
@@ -79,53 +79,53 @@ test_that("stackedDigitChart accepts title override", {
   )
 })
 
-test_that("stackedDigitChart accepts scaleDigitPalette override", {
+test_that("plotDigitCounts accepts scaleDigitPalette override", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
   vdiffr::expect_doppelganger(
-    title = "stackedDigitChart no palette",
-    fig = stackedDigitChart(
+    title = "plotDigitCounts no palette",
+    fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       scaleDigitPalette = NULL
     )
   )
   vdiffr::expect_doppelganger(
-    title = "stackedDigitChart paired palette",
-    fig = stackedDigitChart(
+    title = "plotDigitCounts paired palette",
+    fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       scaleDigitPalette = ggplot2::scale_fill_brewer(palette = "Paired")
     )
   )
 })
 
-test_that("stackedDigitChart accepts theme override", {
+test_that("plotDigitCounts accepts theme override", {
   set.seed(42)
   sample_data <- data.frame(
     siteID = sample(c("siteA", "siteB", "siteC"), 1000, replace = TRUE),
     onesPlace = sample(0:9, 1000, replace = TRUE)
   )
   vdiffr::expect_doppelganger(
-    title = "stackedDigitChart no theme",
-    fig = stackedDigitChart(
+    title = "plotDigitCounts no theme",
+    fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       themePlot = NULL
     )
   )
   vdiffr::expect_doppelganger(
-    title = "stackedDigitChart theme_minimal",
-    fig = stackedDigitChart(
+    title = "plotDigitCounts theme_minimal",
+    fig = plotDigitCounts(
       sample_data,
-      siteID,
-      onesPlace,
+      "siteID",
+      "onesPlace",
       themePlot = ggplot2::theme_minimal()
     )
   )

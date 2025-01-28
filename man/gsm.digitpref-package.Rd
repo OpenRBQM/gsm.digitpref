@@ -4,9 +4,9 @@
 \name{gsm.digitpref-package}
 \alias{gsm.digitpref}
 \alias{gsm.digitpref-package}
-\title{gsm.digitpref: What the Package Does (One Line, Title Case)}
+\title{gsm.digitpref: Identify and Visualize Digit Preference}
 \description{
-What the package does (one paragraph).
+Visualization the distributions of digits in data, optionally grouped by site or other grouping variable.
 }
 \seealso{
 Useful links:
@@ -27,6 +27,7 @@ Authors:
 
 Other contributors:
 \itemize{
+  \item Shuo Wang \email{shuo.wang@gilead.com} [contributor]
   \item Gilead Sciences [copyright holder]
 }
 
