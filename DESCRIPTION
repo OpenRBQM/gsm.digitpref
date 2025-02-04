@@ -16,6 +16,7 @@ URL: https://openrbqm.github.io/gsm.digitpref/,
 BugReports: https://github.com/OpenRBQM/gsm.digitpref/issues
 Imports: 
     cli,
+    dplyr,
     ggplot2,
     glue,
     purrr,
@@ -23,7 +24,6 @@ Imports:
     stringi,
     tibble
 Suggests: 
-    dplyr,
     english,
     stringr,
     testthat (>= 3.0.0),
